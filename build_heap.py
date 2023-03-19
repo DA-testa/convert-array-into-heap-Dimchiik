@@ -4,10 +4,10 @@ def heap(data, n, i, swaps):
     right = 2*i+2
     left=2*i+1
 
-    if left < n and data[i] > data[left]:
+    if left<n and data[i] > data[left]:
         s = left
 
-    if right < n and data[s] > data[right]:
+    if right<n and data[s] > data[right]:
         s = right
 
     if s != i :
@@ -16,14 +16,14 @@ def heap(data, n, i, swaps):
         heap(data, n , s, swaps)
 
 
-def build_heap(data):
+def build_heap(data, n):
     swaps = []
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
 
 
     for i in range (n//2,-1,-1):
-        heap(data,n,i,swaps) 
+        heap(data, n,i,swaps) 
 
 
     return swaps
@@ -37,7 +37,7 @@ def main():
             data = list(map(int, input().split()))
         elif teksts.startswith('F'):
             filename = "tests/" + input("Enter file")
-            with open (filename, "r") as file:
+            with open(filename, "r") as file:
                 n = int(file.readline())
                 data = list(map(int, file.readline().split()))
 
@@ -47,7 +47,7 @@ def main():
         print(len(swaps))
         for i, j in swaps:
             print(i, j)
-    except Exception as ex:
+    except Exception as e:
         print("Error")
         return
 
